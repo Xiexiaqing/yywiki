@@ -15,7 +15,7 @@ export function initPage() {
 export function getList(post_data) {
     return async (dispatch, getState) => {
         try {
-            let now_feed_list = Array.concat([], getState()['home.index'].feed_list);
+            let now_feed_list = [].concat(getState()['home.index'].feed_list);
             if (post_data.page === 1) {
                 now_feed_list = [];
             }

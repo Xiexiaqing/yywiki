@@ -9,9 +9,6 @@ application/package-lock.json*
 framework/node_modules
 application/node_modules
 
-# Build files
-application/dist
-
 # FTP
 ftpsync.settings
 

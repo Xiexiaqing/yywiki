@@ -4,11 +4,16 @@
 module.exports = function(sequelize) {
 	return function *() {
 		var path = this.path;
-		var pug_name = 'index';
+		var pug_name = 'release';
 		var miss = false;
+		var now_env = process.env.NODE_ENV;
+
+		if (now_env === 'development') {
+			pug_name = 'dev';
+		}
 
 		if (miss) {
-			this.redirect('/index');
+			this.redirect('/dev');
 			return;
 		}
 

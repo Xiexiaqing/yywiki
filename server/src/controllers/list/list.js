@@ -1,5 +1,4 @@
 var request = require("co-request");
-var now_env = process.env.NODE_ENV;
 
 module.exports = function(db_instance) {
 	return function *(ctx, next, a) {

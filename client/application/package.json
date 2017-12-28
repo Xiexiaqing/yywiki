@@ -1,5 +1,5 @@
 {
-  "name": "tree_wiki",
+  "name": "yywiki",
   "version": "0.0.1",
   "description": "react + redux + webpack",
   "main": "../framework/lib/index.js",
@@ -7,12 +7,12 @@
   },
   "devDependencies": {},
   "scripts": {
-    "new": "NODE_ENV=production node ../framework/prod-server.js",
-    "start": "NODE_ENV=production pm2 start ../framework/prod-server.js",
+    "new": "node ../framework/prod-server.js",
+    "start": "pm2 start ../framework/prod-server.js --name yywiki-fe",
     "clean": "node ../framework/scripts/clean.js",
-    "build": "NODE_ENV=production node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node ../framework/scripts/build-local.js",
-    "dev": "NODE_ENV=development node ../framework/dev-server",
-    "publish": "NODE_ENV=production node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node --harmony ../framework/scripts/publish.js",
+    "build": "node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node ../framework/scripts/build-local.js",
+    "dev": "node ../framework/dev-server",
+    "publish": "node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node --harmony ../framework/scripts/publish.js",
     "test": "node ../framework/scripts/eslint_test.js",
     "gc": "node ../framework/scripts/gc.js",
     "jscodeshift": "../framework/node_modules/.bin/jscodeshift -t ../framework/scripts/react-codemod/transforms/React-PropTypes-to-prop-types.js --ignore-pattern node_modules --ignore-pattern _repochpack --ignore-pattern .babelcache --ignore-pattern dist --ignore-pattern statics ."    
