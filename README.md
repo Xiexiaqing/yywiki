@@ -31,3 +31,7 @@
 ### Visiting the wiki
 
 Open `http://127.0.0.1:3000` in your browser.
+
+## Depoly
+
+You guess!
