@@ -40,7 +40,7 @@ const TPL = [
 ].join('\n');
  
 module.exports = {
-    prefix: '//127.0.0.1:8088/dist/',
+    prefix: '//60.205.183.142:8088/dist/',
     devPrefix: '//127.0.0.1',
     appName: '',
     title: '',
