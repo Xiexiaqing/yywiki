@@ -7,12 +7,6 @@ module.exports = function(sequelize) {
 		var pug_name = 'index';
 		var miss = false;
 
-		if (path === '/confirm') {
-			pug_name = 'check';
-		} else if (path === '/quit') {
-			pug_name = 'quit';
-		}
-
 		if (miss) {
 			this.redirect('/index');
 			return;

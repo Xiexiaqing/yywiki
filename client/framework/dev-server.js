@@ -72,7 +72,7 @@ browserSync({
         ]
     },
 
-    open: "external",
+    open: false,
 
     port: port,
 

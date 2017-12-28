@@ -7,7 +7,7 @@ import inter from './inter';
 
 let t = inter();
 
-t.register("create", {url:'http://127.0.0.1:3000/api/do/create',method:'post'});
-t.register("list", {url:'http://127.0.0.1:3000/api/get/feed/list',method:'get'});
+t.register("create", {url:'/api/do/create',method:'post'});
+t.register("list", {url:'/api/get/feed/list',method:'get'});
 
 module.exports = t;

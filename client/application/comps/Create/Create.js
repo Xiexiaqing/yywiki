@@ -107,16 +107,14 @@ class Create extends React.Component {
         }
 
         // 因为formData传递不过去，所以暂时这样处理
-        axios.post('http://127.0.0.1:3000/api/do/create', formData, {
+        axios.post('/api/do/create', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(function (response) {
-            // console.log(response);
             that.handleBack();
         })
         .catch(function (error) {
-            // console.log(error);
         });
     }
 

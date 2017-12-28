@@ -1,10 +1,5 @@
 var request = require("co-request");
 var now_env = process.env.NODE_ENV;
-var SERVER_HOST = 'http://127.0.0.1:3000';
-
-if (now_env === 'product') {
-    SERVER_HOST = '';
-}
 
 module.exports = function(db_instance) {
 	return function *(ctx, next, a) {
@@ -53,11 +48,11 @@ module.exports = function(db_instance) {
                 feed_item.pics = [];
                 for (var j = 0; j < res[i].files.length; j++) {
                     feed_item.pics.push({
-                        url: SERVER_HOST + '/images/' + res[i].files[j]
+                        url:  '/images/' + res[i].files[j]
                     });
                 }
             } else if (res[i].type === 'video') {
-                feed_item.video_url = SERVER_HOST + '/videos/' + res[i].files[0];
+                feed_item.video_url = '/videos/' + res[i].files[0];
             } else if (res[i].type === 'article') {
                 feed_item.title = '';
                 feed_item.img_url = '';
