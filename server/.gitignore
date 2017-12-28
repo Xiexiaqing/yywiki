@@ -7,7 +7,7 @@ node_modules
 log
 
 src/public/*
-serve/.pid
+server/.pid
 
 .svn
 .DS_Store

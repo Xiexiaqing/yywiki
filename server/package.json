@@ -11,9 +11,9 @@
     "export"
   ],
   "scripts": {
-    "dev": "./node_modules/gulp/bin/gulp.js",
-    "start": "./node_modules/pm2/bin/pm2 start yywiki.js",
-    "reload": "./node_modules/pm2/bin/pm2 reload yywiki"
+    "dev": "NODE_ENV=development ./node_modules/gulp/bin/gulp.js",
+    "start": "NODE_ENV=product ./node_modules/pm2/bin/pm2 start yywiki.js",
+    "reload": "NODE_ENV=product ./node_modules/pm2/bin/pm2 reload yywiki"
   },
   "author": "wudi3",
   "license": "MIT",
