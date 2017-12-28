@@ -1,0 +1,24 @@
+# Logs
+npm-debug.log*
+framework/npm-debug.log*
+framework/npm-shrinkwrap.json*
+application/npm-debug.log*
+application/package-lock.json*
+
+# Dependency directories
+framework/node_modules
+application/node_modules
+
+# Build files
+application/dist
+
+# FTP
+ftpsync.settings
+
+# SFTP
+sftp-config.json
+
+# Other files
+.svn
+.DS_Store
+application/template.html

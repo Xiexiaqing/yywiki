@@ -1,0 +1,87 @@
+.container {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+	margin-top: 1rem;
+}
+
+.child {
+    float: left;
+    width: 100%;
+    position: relative;
+    transitionProperty: transform;
+}
+
+.dots_wrapper{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    height: 1.1rem;
+    text-align: center;
+}
+.dots{
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    box-shadow: 0.1rem 0.1rem 0.1rem -1px rgba(0, 0, 0, 0.15) inset;
+            transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    margin: 0 0.25rem;
+    background: #dedede;
+    box-shadow: 0.1rem 0.1rem 0.1rem -1px rgba(0, 0, 0, 0.15) inset;
+}
+.dots_active{
+    background: #939393;
+    box-shadow: 0.1rem 0.1rem 0.1rem -1px rgba(0, 0, 0, 0.65) inset;
+}
+
+
+
+.slider_images_list {}
+.slider_images_list li{
+	position:absolute;vertical-align:bottom;display:block;
+	opacity: 0;
+	transition: opacity .1s ease-in;
+	-webkit-transition: opacity .2s ease-in;
+    /*下面是消除transition闪屏的代码*/
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+.slider_images_list .slider_tag{
+	display:block;
+	width:3.75rem;
+	height:2.65rem;
+	left:1rem;
+	line-height:2.65rem;
+	overflow:hidden;
+	position:absolute;
+	top:-1px;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAA1CAYAAAAJZhZbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1MzExRkJBQkQzQzZFNDExOTk3Q0RGQTM5MTlCNzg0MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3QzhFMTU3QTU3NTIxMUU2QUY0MkFFMjA1Qzg0NzM0NCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3QzhFMTU3OTU3NTIxMUU2QUY0MkFFMjA1Qzg0NzM0NCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MDNhNDdhYS0xMWQxLTQ1ODctYWNlZS1kNTY4M2NiMjIyNDIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTMxMUZCQUJEM0M2RTQxMTk5N0NERkEzOTE5Qjc4NDIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz58THZeAAACSElEQVR42uybTyhsUQDGz8wbd0Gxs7WwsrLx9oyymYUSK2RjoVnIewuysyTlz4qFKFM2GrKxsUAWLKTkvbwXKaUURRTplq7vmE+dTs10N0i+Kcev0/lux+f+uucWiWjGRKbCFD4P+BIX5aRKiM9JlRCfkypBGkpDafiFOFVyQf2IMSG+B5x3+f8qhsNvVVqq5AJbzvGI7q5YGgZST0/Dd3kahipKGkrDz9bwX15FOZwqucAcqShpqHdDvRtKQ2koDcXSUBpKQ2koDaWhWBpKQ2koDaWhNBRLQ2koDT+UG35Jw9gcVEnD2BxKw/gc6Gmop+FnaJj6luX8/G1MWWXxPwEtkk1EiybS3SUNdSjVu6E0lIbSUIXE13DUm7T/2brtLX4G73gXecK462XvwQde9hr818teYDzxsqecd7N/wNde1l7/3svucT9udgf87GW3MEZedh3sH5/W2YObHbUaDgMmnKKyoCbwglNUJzgNzjNoj3Bt4GbwBrOP4Awozc3bzw24BdzEH9xmL7kmDT5j9oxrmsGXTlF2TQv4ltk9ZjPgB2Y3uDe7n5DZPLOd3L/NzjObdcqZNH2R3XPWKWfSdEcZ9vBWrJ0btofS18MpJqe4+Wku+IFxDrwJXuTFA/ASKAde48XLwcvgcfAWs1UYV8BD4H1mq8HLoD7wMbM14By4G3zObB3GWXAH+IrZBvAYC7ljthE8CG4HPzLbirGLv9yQ2R5wI6jXudP6wbXgAZRQKC6X6MdYi/kBFFiYm8VcBeZMYd2LAAMAHP+YlByiW5IAAAAASUVORK5CYII=) 100% 0 no-repeat;
+	background-size: cover;
+	z-index:100;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	text-align: center;
+}
+.slider_images_list img {
+	width: 100%;
+	height: auto;
+    /*border: 0.2rem solid #FFFFFF;*/
+	box-shadow: 0 0.1rem 0.5rem rgba(0,0,0,0.35);
+	-webkit-box-shadow: 0 0.1rem 0.5rem rgba(0,0,0,0.35);
+}
+.slider_title {
+	margin: 0.4rem 1.2rem 1.4rem;font-size: 1.6rem;text-align: center;color: #333;
+    overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+	transition: opacity .2s ease-in;
+	-webkit-transition: opacity .2s ease-in;
+}
+

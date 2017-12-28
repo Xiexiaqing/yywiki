@@ -1,0 +1,21 @@
+{
+  "name": "babel-plugin-transform-special-variables",
+  "version": "6.8.0",
+  "description": "transform special variables",
+  "repository": "https://github.com/MrGalaxyn",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "babel-plugin"
+  ],
+  "scripts": {
+    "prepublish": "../../../node_modules/.bin/babel src -d lib",
+    "dev": "../../node_modules/.bin/babel src -d lib -w"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.0.0"
+  },
+  "devDependencies": {
+    "babel-helper-plugin-test-runner": "^6.8.0"
+  }
+}

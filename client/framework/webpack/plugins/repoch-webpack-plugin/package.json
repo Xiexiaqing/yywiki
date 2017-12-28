@@ -1,0 +1,13 @@
+{
+  "name": "repoch-webpack-plugin",
+  "version": "0.0.1",
+  "author": {
+    "name": "MrGalaxyn"
+  },
+  "description": "repoch bundle loader module for webpack",
+  "dependencies": {
+    "loader-utils": "0.2.x"
+  },
+  "licenses": "MIT",
+  "repository": "https://github.com/MrGalaxyn"
+}

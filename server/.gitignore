@@ -1,0 +1,14 @@
+# Logs
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+log
+
+src/public/*
+serve/.pid
+
+.svn
+.DS_Store
+application/template.html

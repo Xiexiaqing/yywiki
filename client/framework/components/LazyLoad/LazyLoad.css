@@ -1,0 +1,38 @@
+.placeholder {
+    background-color: #f6f6f6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+
+    /*webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);*/
+}
+.placeholder img {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    transition: opacity .1s linear;
+    -webkit-transition: opacity .1s linear;
+    /*下面是消除transition闪屏的代码*/
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+.placeholder img.loaded {
+    opacity: 1;
+}
+
+.img_small {
+    filter: blur(50px);
+    -webkit-filter: blur(50px);
+    /* this is needed so Safari keeps sharp edges */
+    /*transform: scale(1);*/
+}

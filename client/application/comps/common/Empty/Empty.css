@@ -1,0 +1,15 @@
+.empty_list {
+    padding: 8rem 0;
+    background: #f2f2f2;
+    height: 8rem;
+    text-align: center;
+}
+.empty_list img {
+    width: 77px;
+    height: 66px;
+}
+.empty_list .empty_content {
+    margin-top: 1.4rem;
+    color: #bdbdbd;
+    line-height: 1.5;
+}

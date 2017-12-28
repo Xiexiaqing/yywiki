@@ -1,0 +1,145 @@
+{
+    "/api/admin/audit": {
+        "code": 100000,
+        "msg": "",
+        "data": {
+            "leave": [
+                {
+                    "audit_type": "导师审核",
+                    "setting_list": []
+                },
+                {
+                    "audit_type": "辅导员审核",
+                    "setting_list": []
+                },
+                {
+                    "audit_type": "学院审核",
+                    "setting_list": [
+                        {
+                            "value": "computer",
+                            "name": "计算机学院",
+                            "auditor": "12371237,1231231"
+                        },
+                        {
+                            "value": "automation",
+                            "name": "自动化学院",
+                            "auditor": "12371237"
+                        }
+                    ]
+                }
+            ],
+            "census": [
+                {
+                    "audit_type": "辅导员审核",
+                    "setting_list": []
+                },
+                {
+                    "audit_type": "学院审核",
+                    "setting_list": [
+                        {
+                            "value": "computer",
+                            "name": "计算机学院",
+                            "auditor": "12371237,1231231"
+                        },
+                        {
+                            "value": "automation",
+                            "name": "自动化学院",
+                            "auditor": "12371237"
+                        }
+                    ]
+                }
+            ],
+            "card": [
+                {
+                    "audit_type": "辅导员审核",
+                    "setting_list": []
+                }
+            ]
+        }
+    },
+    "/api/admin/set/audit": {
+        "code": 100000,
+        "msg": "",
+        "data": {}
+    },
+    "/api/sendmessage/list": {
+        "code": 100000,
+        "msg": "",
+        "data": {
+            "phone_num": "1234657890",
+            "leave": [
+                {
+                    "check_type": "导师审核完成",
+                    "check_type_en":"s",
+                    "ischeck": 1
+                },
+                {
+                    "check_type": "辅导员审核完成",
+                    "check_type_en":"s1",
+                    "ischeck": 1
+                },
+                {
+                    "check_type": "学院审核完成",
+                    "check_type_en":"s2",
+                    "ischeck": 0
+                },
+                {
+                    "check_type": "全部通过",
+                    "check_type_en":"s3",
+                    "ischeck": 1
+                },
+                {
+                    "check_type": "申请被拒绝",
+                    "check_type_en":"s4",
+                    "ischeck": 0
+                }
+            ],
+            "census": [
+                {
+                    "check_type": "辅导员审核完成",
+                    "check_type_en":"s6",
+                    "ischeck": 1
+                },
+                {
+                    "check_type": "学院审核完成",
+                    "check_type_en":"s7",
+                    "ischeck": 0
+                },
+                {
+                    "check_type": "全部通过",
+                    "check_type_en":"s8",
+                    "ischeck": 1
+                },
+                {
+                    "check_type": "申请被拒绝",
+                    "check_type_en":"s9",
+                    "ischeck": 0
+                }
+
+            ],
+            "card": [
+                {
+                    "check_type": "辅导员审核完成",
+                    "check_type_en":"s10",
+                    "ischeck": 0
+                },
+                {
+                    "check_type": "全部通过",
+                    "check_type_en":"s11",
+                    "ischeck": 0
+                },
+                {
+                    "check_type": "申请被拒绝",
+                    "check_type_en":"s12",
+                    "ischeck": 0
+                }
+            ]
+        }
+    },
+    "/api/sendmessage/set/list": {
+        "code": 100000,
+        "msg": "",
+        "data": {}
+    }
+
+}

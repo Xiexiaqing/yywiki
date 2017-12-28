@@ -1,0 +1,38 @@
+.layer_main_wrap{
+	/*max-width: 15em;*/
+	z-index: 999;
+}
+@media only screen and (min-width: 768px){
+	.layer_main_wrap{
+		width: 200px;
+		text-align: center;
+	}
+}
+.layer_wrap {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	border-radius: 5px;
+}
+.layer_main_wrap .inner {
+    min-width: 12rem;
+	color: #fff;
+	font-size: 13px;
+	padding: 25px 30px;
+	position: relative;
+    text-align: center;
+}
+
+.fadelayer {
+  position: relative;
+  z-index: 100001;
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease;
+       -o-transition: opacity 300ms ease;
+          transition: opacity 300ms ease;
+}
+.fadein {
+  opacity: 0.7;
+}

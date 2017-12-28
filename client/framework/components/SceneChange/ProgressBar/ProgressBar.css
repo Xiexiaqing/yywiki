@@ -1,0 +1,18 @@
+.progress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    /*background: #fff;*/
+}
+.progressShape{
+    width: 0px;
+    height: 100%;
+    background: #000;
+}
+.progressShape_p1{
+    -webkit-transition:all 60s cubic-bezier(0,1.22,0,.93);
+}
+.progressShape_fast{
+    -webkit-transition:all 500ms ease;
+}

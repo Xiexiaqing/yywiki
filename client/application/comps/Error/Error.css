@@ -1,0 +1,37 @@
+.lottery_error{
+    min-height: 314px;
+}
+.lottery_error .error_img{
+    width: 100%;
+}
+.lottery_error .error_img img{
+    width: 14rem;
+    height: auto;
+    display: block;
+    margin: 15% auto 2.5rem;
+}
+.lottery_error p{
+    text-align: center;
+    line-height: 1.8rem;
+    font-size: 1.6rem;
+    color: #525252;
+    width: 100%;
+}
+.btn_wrap{
+    position: fixed;
+    bottom: 1.1rem;
+    width: 100%;
+}
+.btn_submit{
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 3.8rem;
+    line-height: 3.8rem;
+    background: #ff8200;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.6rem;
+    text-decoration: none;
+    text-align: center;
+}
