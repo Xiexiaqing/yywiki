@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createContainer from 'lib/createContainer';
-import { NoticeBar, Tabs, TextareaItem, ImagePicker, List, NavBar, DatePicker, Picker } from 'antd-mobile';
+import { Toast, NoticeBar, Tabs, TextareaItem, ImagePicker, List, NavBar, DatePicker, Picker } from 'antd-mobile';
 import Separator from 'comps/common/Separator/Separator';
 import axios from 'utils/axios';
 
@@ -106,15 +106,20 @@ class Create extends React.Component {
             formData.append('video_file', this.state.video_file);
         }
 
+        Toast.loading('Loading...', 0);
+
         // 因为formData传递不过去，所以暂时这样处理
         axios.post('/api/do/create', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(function (response) {
+            Toast.hide();
             that.handleBack();
         })
         .catch(function (error) {
+            Toast.hide();
+            Toast.fail(error, 3);
         });
     }
 

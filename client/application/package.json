@@ -12,6 +12,7 @@
     "clean": "node ../framework/scripts/clean.js",
     "build": "node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node ../framework/scripts/build-local.js",
     "dev": "node ../framework/dev-server",
+    "convert": "node ../framework/scripts/convertTemplate.js",
     "publish": "node ../framework/node_modules/cross-env/bin/cross-env.js DEBUG=false node --harmony ../framework/scripts/publish.js",
     "test": "node ../framework/scripts/eslint_test.js",
     "gc": "node ../framework/scripts/gc.js",
