@@ -80,6 +80,7 @@ class Create extends React.Component {
         if (this.state.text === '' &&
             this.state.img_files.length === 0 &&
             !this.state.video_file) {
+            Toast.fail("不要提交空数据", 3);
             return;
         }
 
