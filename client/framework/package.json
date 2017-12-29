@@ -8,6 +8,7 @@
     "dom-helpers": "2.4.0",
     "exenv": "1.2.0",
     "history": "3.2.1",
+    "html2jade": "^0.8.6",
     "prop-types": "15.5.8",
     "react": "15.5.0",
     "react-dom": "15.5.0",
