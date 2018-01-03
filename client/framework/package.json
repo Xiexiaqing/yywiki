@@ -50,7 +50,7 @@
     "es5-shim": "4.5.7",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.16.1",
-    "express": "4.13.4",
+    "express": "^4.13.4",
     "extract-text-webpack-plugin": "0.8.2",
     "file-loader": "0.8.5",
     "gm": "^1.22.0",
