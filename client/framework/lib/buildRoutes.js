@@ -15,7 +15,7 @@ function buildRouteComponents() {
         let routeConf = routeConfig['route'][route];
 
         if (routeConf.on_enter) {
-            enterHandlers[route] = require('routes/' + routeConf.on_enter)
+            enterHandlers[route] = require('routes/enter/' + routeConf.on_enter)
         }
 
         if (routeConf.state_path) {

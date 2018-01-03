@@ -19,17 +19,36 @@ module.exports = {
         '/home': {
             component_path: 'Home/Home',
             title: '首页',
+            on_enter: 'mustLogin',
             state_path: 'home/index'
         },
         '/article': {
             component_path: 'Article/Article',
             title: "文章",
+            on_enter: 'mustLogin',
             state_path: ""
         },
         '/create': {
             component_path: 'Create/Create',
             title: "发消息",
+            on_enter: 'mustLogin',
             state_path: "create/index"
+        },
+        '/mine': {
+            component_path: 'Mine/Mine',
+            title: "我",
+            on_enter: 'mustLogin',
+            state_path: "mine/index"
+        },
+        '/signin': {
+            component_path: 'Signin/Signin',
+            title: "登录",
+            state_path: "signin/index"
+        },
+        '/signup': {
+            component_path: 'Signup/Signup',
+            title: "注册",
+            state_path: "signup/index"
         }
     },
     root: '/',

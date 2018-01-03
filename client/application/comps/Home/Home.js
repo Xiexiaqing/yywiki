@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createContainer from 'lib/createContainer';
 import CustomListView from 'comps/common/CustomListView/CustomListView';
-import { Drawer, List, NavBar, Icon, Radio, ListView, Grid, Card } from 'antd-mobile';
+import { TabBar, Drawer, List, NavBar, Icon, Radio, ListView, Grid, Card } from 'antd-mobile';
 import Text_Card from 'comps/common/Cards/Text/Text';
 import Pics_Card from 'comps/common/Cards/Pics/Pics';
 import Article_Card from 'comps/common/Cards/Article/Article';
@@ -31,7 +31,6 @@ class Home extends React.Component {
         super(props);
 
         this.state = {
-            born_date: "2016-08-18",
             open: false,
             selected_type: 'all'
         }
@@ -48,7 +47,6 @@ class Home extends React.Component {
         });
 
         this.context.createAction("home.index.getList", {
-            user_id: "yiyi",
             type: selected_type,
             page: 1
         });
@@ -70,7 +68,6 @@ class Home extends React.Component {
 
     handleLoadData = (cb) => {
         this.context.createAction("home.index.getList", {
-            user_id: "yiyi",
             type: this.state.selected_type,
             page: this.props.page + 1
         });
@@ -106,7 +103,7 @@ class Home extends React.Component {
     }
 
     buildSectionTitle = (sectionData, sectionID) => {
-        let days = Math.ceil((new Date(sectionID).getTime() - new Date(this.state.born_date).getTime()) / (24 * 3600 * 1000)) + 1;
+        let days = Math.ceil((new Date(sectionID).getTime() - new Date(this.props.birthday).getTime()) / (24 * 3600 * 1000)) + 1;
         days += "天";
 
         return (
@@ -151,6 +148,10 @@ class Home extends React.Component {
         this.context.router.push('/create');
     }
 
+    handleToMine = () => {
+        this.context.router.push('/mine');
+    }
+
     render() {
         return (
             <div>
@@ -166,7 +167,7 @@ class Home extends React.Component {
                 </NavBar>
                 <Drawer
                     className="my-drawer"
-                    style={{ minHeight: document.documentElement.clientHeight - 45 }}
+                    style={{ minHeight: document.documentElement.clientHeight - 95 }}
                     contentStyle={{ color: '#A6A6A6' }}
                     sidebar={ this.buildSideBar() }
                     open={ this.state.open }
@@ -174,6 +175,50 @@ class Home extends React.Component {
                 >
                     { this.buildListView() }
                 </Drawer>
+                <TabBar
+                    unselectedTintColor="#949494"
+                    tintColor="#33A3F4"
+                    barTintColor="white"
+                >
+                    <TabBar.Item
+                        title="首页"
+                        key="home"
+                        icon={
+                        <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selectedIcon={
+                        <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selected={ true }
+                        onPress={ null } />
+                    <TabBar.Item
+                        title="我"
+                        key="mine"
+                        icon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selectedIcon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selected={ false }
+                        onPress={ this.handleToMine } />
+                </TabBar>
             </div>
         );
     }
@@ -182,5 +227,6 @@ class Home extends React.Component {
 export default createContainer([
     ['home.index.feed_list', 'array', []],
     ['home.index.page', 'number', 1],
+    ['home.index.birthday', 'string', ''],
     ['home.index.total_page', 'number', 0]
 ])(Home);

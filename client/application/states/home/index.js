@@ -5,7 +5,7 @@ import jsonToQuery from 'kits/jsonToQuery';
 export function initPage() {
     return async (dispatch, getState) => {
         try {
-            dispatch(getList({ user_id: 'yiyi' }));
+            dispatch(getList({}));
         } catch (e) {
             dispatch(setMsgToast(e.message));
         }
@@ -28,6 +28,7 @@ export function getList(post_data) {
                     type: 'LIST_INIT_DATA',
                     feed_list: now_feed_list,
                     page: succ_res.data.page,
+                    birthday: succ_res.data.birthday,
                     total_page: succ_res.data.total_page
                 });
             }, function(err_res){
@@ -108,7 +109,8 @@ export const initialState = {
     ],
     cur_page: 1,
     total_page: 0,
-    has_more: true
+    has_more: true,
+    birthday: "2016-08-18"
 };
 
 export function reducer(state = initialState, action) {
@@ -116,6 +118,7 @@ export function reducer(state = initialState, action) {
         case 'LIST_INIT_DATA':
             return {
                 ...state,
+                birthday: action.birthday,
                 feed_list: action.feed_list,
                 cur_page: action.page,
                 total_page: action.total_page,

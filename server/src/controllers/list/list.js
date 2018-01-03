@@ -1,9 +1,9 @@
 var request = require("co-request");
 
-module.exports = function(db_instance) {
-	return function *(ctx, next, a) {
+module.exports = function(db_instance, app) {
+	return function *(ctx, next) {
         if('GET' != this.method) return yield next;
-        var user_id = this.query.user_id || '';
+        var user_id = app.context.user_id || '';
 
         if (user_id === '') {
             this.body = {
@@ -29,6 +29,9 @@ module.exports = function(db_instance) {
         if (type !== 'all') {
             condition.type = type;
         }
+        var user_model = db_instance['User'];
+        var user_res = yield user_model.findOne({ user_id: user_id });
+        var birthday = user_res.birthday;
         
         var feed_model = db_instance['Feed'];
         var total_count = yield feed_model.find(condition).count();
@@ -69,6 +72,7 @@ module.exports = function(db_instance) {
             data: {
                 list: response_arr,
                 page: page,
+                birthday: birthday,
                 total_page: Math.ceil(total_count/page_size)
             }
         };

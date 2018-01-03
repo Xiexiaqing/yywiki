@@ -22,7 +22,7 @@ module.exports = function(app, router) {
 		}
 
 		var controller = routesConfig[o].controller;
-		controller = controller ? require('../src/controllers/' + controller).call(this, unique_model) : null;
+		controller = controller ? require('../src/controllers/' + controller).call(this, unique_model, app) : null;
 
 		if (routesConfig[o].method && routesConfig[o].method === 'post') {
 			// app.use(route.post(o, controller));

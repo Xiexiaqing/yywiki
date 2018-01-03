@@ -5,15 +5,24 @@ var fs = require("fs");
 var path = require("path");
 var exif_image = require('exif').ExifImage;
 
-module.exports = function(db_instance) {
+module.exports = function(db_instance, app) {
 	return function *(ctx, next) {
         if('POST' != this.method) return yield next;
+        var user_id = app.context.user_id || '';
+        if (user_id === '') {
+            this.body = {
+                code: 100005,
+                msg: "数据获取错误",
+                data: {}
+            };
 
+            return;
+        }
+        
         var feed_model = db_instance['Feed'];
 
         // multipart upload  
         var parts = parse(this);
-        var user_id = '';
         var text = '';
         var record_time = '';
         var visiable_range = '';
@@ -26,11 +35,6 @@ module.exports = function(db_instance) {
         var image_exif = '';
 
         while (part = yield parts) {
-            if (part[0] == 'user_id') {
-                user_id = part[1];
-                continue;
-            }
-
             if (part[0] == 'text') {
                 text = part[1];
                 continue;

@@ -15,7 +15,7 @@ export default class CustomListView extends React.Component {
         this.state = {
             isLoading: false,
             dataSource,
-            height: document.documentElement.clientHeight * 3 / 4,
+            height: document.documentElement.clientHeight - 95,
         }
     }
 
@@ -40,7 +40,7 @@ export default class CustomListView extends React.Component {
     }
 
     componentDidMount() {
-        const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop - 45;
+        const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop - 95;
         setTimeout(() => {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRowsAndSections(this.props.list_data),

@@ -9,6 +9,12 @@
  *	}
  */
 
-export default function mustLogin() {
-    return false;
+export default function(props) {
+    let token = window.localStorage.getItem('jwt_token') || '';
+    if (token) {
+        return;
+    }
+    
+    window.location.replace("/signin");
+    return true;
 }

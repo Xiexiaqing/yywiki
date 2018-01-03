@@ -11,6 +11,8 @@ var cors = require('koa-cors');
 var config = require('../config');
 var bootstrapRoutes = require('./bootstrapRoutes');
 var err_middleware = require('../src/middleware/error');
+var referer_middleware = require('../src/middleware/referer');
+var token_middleware = require('../src/middleware/token');
 
 module.exports = function() {
 	/******************************************************
@@ -22,6 +24,7 @@ module.exports = function() {
 		headers: "Authorization",
 		methods: 'GET,PUT,POST,HEAD,OPTIONS'
 	}));
+	app.context.env = process.env.NODE_ENV;
 
 	/** Define pug template render **/
 	var pug = new Pug({
@@ -34,11 +37,14 @@ module.exports = function() {
 	  	app: app
 	});
 
+	app.use(token_middleware(app));
+	app.use(referer_middleware(app));
+	app.use(err_middleware(app));
+
 	/** Define public path, for css/js/images **/
 	app.use(serve(path.join(__dirname, '../src/public')));
 
 	/** Define error middleware **/
-	app.use(err_middleware());
 
 	/******************************************************
 	 * Initialize Sequelize

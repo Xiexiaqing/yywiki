@@ -133,3 +133,7 @@
     margin-left: 8px;
     min-width: 150px;
 }
+
+.am-tab-bar-bar .am-tab-bar-tab-title {
+    font-size: 14px;
+}

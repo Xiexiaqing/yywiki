@@ -88,7 +88,6 @@ class Create extends React.Component {
         let post_file = this.state.file_type === 'pic' ? this.state.img_files[0] : this.state.video_file;
 
         var formData = new FormData();
-        formData.append('user_id', 'yiyi');
         formData.append('text', this.state.text);
         formData.append('record_time', this.state.record_time);
         formData.append('visiable_range', this.state.visiable_range);
@@ -154,6 +153,7 @@ class Create extends React.Component {
                     </DatePicker>
                     <Picker
                         data={ RANGE_MAPPER }
+                        cols={ 1 }
                         title="选择可见范围"
                         extra="所有人"
                         value={ this.state.visiable_range }
