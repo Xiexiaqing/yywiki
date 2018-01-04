@@ -107,6 +107,9 @@ class Create extends React.Component {
         }
 
         Toast.loading('Loading...', 0);
+        
+        let token = window.localStorage.getItem('jwt_token') || '';
+        axios.defaults.headers.common['Authorization'] = 'JWT ' + token;
 
         // 因为formData传递不过去，所以暂时这样处理
         axios.post('/api/do/create', formData, {

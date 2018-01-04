@@ -27,7 +27,7 @@ export function getList(post_data) {
                 dispatch({
                     type: 'LIST_INIT_DATA',
                     feed_list: now_feed_list,
-                    page: succ_res.data.page,
+                    page: parseInt(succ_res.data.page),
                     birthday: succ_res.data.birthday,
                     total_page: succ_res.data.total_page
                 });
@@ -107,7 +107,7 @@ export const initialState = {
         //     belong_date: "2017-12-17"
         // }
     ],
-    cur_page: 1,
+    page: 1,
     total_page: 0,
     has_more: true,
     birthday: "2016-08-18"
@@ -120,7 +120,7 @@ export function reducer(state = initialState, action) {
                 ...state,
                 birthday: action.birthday,
                 feed_list: action.feed_list,
-                cur_page: action.page,
+                page: action.page,
                 total_page: action.total_page,
                 has_more: action.total_page > action.page ? true : false
             };

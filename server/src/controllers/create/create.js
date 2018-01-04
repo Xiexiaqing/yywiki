@@ -4,6 +4,10 @@ var parse = require('co-busboy');
 var fs = require("fs");
 var path = require("path");
 var exif_image = require('exif').ExifImage;
+var gm = require('gm');
+var imageMagick = gm.subClass({imageMagick: true});
+
+var target_width = 375;
 
 module.exports = function(db_instance, app) {
 	return function *(ctx, next) {
@@ -63,11 +67,43 @@ module.exports = function(db_instance, app) {
 
             if (part.filename) {
                 var file_name = md5(new Date().getTime() + '_' + user_id + '_' + part.filename);
-                var ext = part.filename.split('.').reverse()[0];
-                var stream = fs.createWriteStream(path.join(__dirname, '../../public/' + directory_name + '/' + file_name + '.' + ext));  
+                var ext = part.filename.split('.').reverse()[0].toLowerCase();
+                var stream = null;
+
+                /* 如果是video不用压缩，直接放在video文件夹中
+                 * 如果是pic则原始数据放到images中的big文件夹下，压缩后的放到small下
+                 * 
+                 * 如果目录不存在，则创建
+                 */
+                if (file_type === 'video') {
+                    stream = fs.createWriteStream(path.join(__dirname, '../../public/' + directory_name + '/' + file_name + '.' + ext));  
+                } else {
+                    stream = fs.createWriteStream(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext));  
+                }
                 part.pipe(stream);
                 console.log('uploading %s -> %s', part.filename, stream.path);  
                 logged_files.push(file_name + '.' + ext);
+
+                stream.on('close', function() {
+                    if (file_type === 'pic') {
+                        // 按比例缩小生成小图
+                        imageMagick(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext))
+                            .size(function(err, res) {
+                                var pic_width = res.width;
+                                var pic_height = res.height;
+
+                                var temp_percent = target_width / pic_width;
+                                var target_height = pic_width * temp_percent;
+                                
+                                imageMagick(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext))
+                                    .resize(target_width, target_height)
+                                    .write(path.join(__dirname, '../../public/' + directory_name + '/small/' + file_name + '.' + ext), function(err) {
+                                        if (err) { console.log(err); }
+                                    });
+                            });
+                    }
+                });
+
                 // image_exif = yield getEXIF(path.join(__dirname, '../../public/images/' + file_name + '.' + ext));
                 // console.log(image_exif);
             }

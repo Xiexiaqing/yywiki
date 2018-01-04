@@ -1,5 +1,12 @@
 # yywiki
 
+## Before
+
+```
+# brew install imagemagick
+# npm install pm2 -g
+```
+
 ## Dev Environment
 
 ### Mongo Service
