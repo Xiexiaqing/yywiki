@@ -50,11 +50,11 @@ module.exports = function(db_instance, app) {
                 feed_item.pics = [];
                 for (var j = 0; j < res[i].files.length; j++) {
                     feed_item.pics.push({
-                        url:  '/images/small/' + res[i].files[j]
+                        url:  '/upload/images/small/' + res[i].files[j]
                     });
                 }
             } else if (res[i].type === 'video') {
-                feed_item.video_url = '/videos/' + res[i].files[0];
+                feed_item.video_url = '/upload/videos/' + res[i].files[0];
             } else if (res[i].type === 'article') {
                 feed_item.title = '';
                 feed_item.img_url = '';

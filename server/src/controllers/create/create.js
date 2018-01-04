@@ -76,9 +76,9 @@ module.exports = function(db_instance, app) {
                  * 如果目录不存在，则创建
                  */
                 if (file_type === 'video') {
-                    stream = fs.createWriteStream(path.join(__dirname, '../../public/' + directory_name + '/' + file_name + '.' + ext));  
+                    stream = fs.createWriteStream(path.join(__dirname, '../../public/upload/' + directory_name + '/' + file_name + '.' + ext));  
                 } else {
-                    stream = fs.createWriteStream(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext));  
+                    stream = fs.createWriteStream(path.join(__dirname, '../../public/upload/' + directory_name + '/big/' + file_name + '.' + ext));  
                 }
                 part.pipe(stream);
                 console.log('uploading %s -> %s', part.filename, stream.path);  
@@ -87,7 +87,7 @@ module.exports = function(db_instance, app) {
                 stream.on('close', function() {
                     if (file_type === 'pic') {
                         // 按比例缩小生成小图
-                        imageMagick(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext))
+                        imageMagick(path.join(__dirname, '../../public/upload/' + directory_name + '/big/' + file_name + '.' + ext))
                             .size(function(err, res) {
                                 var pic_width = res.width;
                                 var pic_height = res.height;
@@ -95,9 +95,9 @@ module.exports = function(db_instance, app) {
                                 var temp_percent = target_width / pic_width;
                                 var target_height = pic_width * temp_percent;
                                 
-                                imageMagick(path.join(__dirname, '../../public/' + directory_name + '/big/' + file_name + '.' + ext))
+                                imageMagick(path.join(__dirname, '../../public/upload/' + directory_name + '/big/' + file_name + '.' + ext))
                                     .resize(target_width, target_height)
-                                    .write(path.join(__dirname, '../../public/' + directory_name + '/small/' + file_name + '.' + ext), function(err) {
+                                    .write(path.join(__dirname, '../../public/upload/' + directory_name + '/small/' + file_name + '.' + ext), function(err) {
                                         if (err) { console.log(err); }
                                     });
                             });
