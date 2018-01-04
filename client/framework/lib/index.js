@@ -6,6 +6,8 @@ import browserHistory from 'react-router/lib/browserHistory';
 import initConnector from './connector';
 import routes from './buildRoutes';
 import setting from 'config/setting';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 class routingState {
     constructor() {

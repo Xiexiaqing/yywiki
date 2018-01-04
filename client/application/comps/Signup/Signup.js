@@ -70,7 +70,7 @@ class Signup extends React.Component {
     }
 
     turnToSignin = (e) => {
-        this.context.router.push('/signin');
+        this.context.router.push('/');
     }
 
     handleDateChange = (date) => {

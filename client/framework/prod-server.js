@@ -9,16 +9,20 @@ var port = projectConfig.proPort || 8080;
 // 静态文件的处理
 app.use(function(req, res, next) {
     // 允许 Firefox、IE9 跨域访问自定义字体
-    if (/\.(js|css|png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg|manifest)/.test(req.url)) {
+    if (/\.(js|css|png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg|manifest|json)/.test(req.url)) {
         res.setHeader("Access-Control-Allow-Origin", "*");
 
-        var file = path.join(root, req.url.split('?')[0]);
-        if (file.lastIndexOf('.css') !== -1) {
+
+        var file = path.join(root, 'dist', req.url.split('?')[0]);
+
+        if (file.match(/\.css$/)) {
             res.header('Content-Type', 'text/css');
-        } else if (file.lastIndexOf('.js') !== -1) {
+        } else if (file.match(/\.js$/)) {
             res.header('Content-Type', 'text/javascript');
         }else if (file.lastIndexOf('.manifest') !== -1) {
             res.header('Content-Type', 'text/cache-manifest');
+        }else if (file.match(/\.json$/)) {
+            res.header('Content-Type', 'application/json');
         }
 
         var resFile = fs.readFileSync(file);

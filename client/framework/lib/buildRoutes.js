@@ -48,9 +48,6 @@ function buildRouteComponents() {
 
 const routes = (
     <Route component={ App }>
-        <Redirect key={ '__indexRoute__' } 
-            from={ routeConfig['root'] || "/" } 
-            to={ routeConfig['index_route'] || '/index' } />
         { buildRouteComponents() }
     </Route>
 );

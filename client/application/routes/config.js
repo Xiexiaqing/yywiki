@@ -11,6 +11,11 @@
 
 module.exports = {
     route: {
+        '/': {
+            component_path: 'Signin/Signin',
+            title: "登录",
+            state_path: "signin/index"
+        },
         '/errpage': {
             component_path: 'Error/Error',
             title: '出错啦',
@@ -40,11 +45,6 @@ module.exports = {
             on_enter: 'mustLogin',
             state_path: "mine/index"
         },
-        '/signin': {
-            component_path: 'Signin/Signin',
-            title: "登录",
-            state_path: "signin/index"
-        },
         '/signup': {
             component_path: 'Signup/Signup',
             title: "注册",
@@ -52,7 +52,6 @@ module.exports = {
         }
     },
     root: '/',
-    index_route: '/home',
     wrap_component_path: 'App/App',
     error_component_path: 'Error/Error'
 };

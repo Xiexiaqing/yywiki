@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const RepochPlugin = require("./plugins/repoch-webpack-plugin");
+const OfflinePlugin = require('offline-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const _ = require('lodash');
 
@@ -17,7 +19,7 @@ if (suffix === '_repochpack') {
 }
 
 const config = require(path.join(root, 'config', 'project'));
-prefix = config.prefix.indexOf('//') === 0 ? config.prefix : ('//' + config.prefix);
+prefix = config.prefix.indexOf('//') === 0 ? config.prefix : config.prefix.indexOf('http') === 0 ? config.prefix : ('//' + config.prefix);
 // prefix = prefix.substr(-1) === '/' ? prefix + suffix + '/' : '/' + prefix + suffix + '/';
 
 function getFileList(src, callback) {
@@ -209,7 +211,22 @@ const cfg = {
             },
             filename: 'index.html',
             hash: true
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(root, 'statics/manifest.json'),
+                to: path.join(root, 'dist/manifest.json')
+            },
+            {
+                from: path.join(root, 'statics/images/logo'),
+                to: path.join(root, 'dist/image/logo')
+            },
+            {
+                from: path.join(root, 'statics/js/offlinepage.js'),
+                to: path.join(root, 'dist/offlinepage.js')
+            }
+        ]),
+        new OfflinePlugin()
     ],
 
     module: {
