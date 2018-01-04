@@ -3,6 +3,7 @@ var fs = require("fs");
 var path = require("path");
 var root = process.cwd();
 var colors = require('colors');
+var exec = require('child_process').exec; 
 
 try {
     var template_html = fs.readFileSync(path.join(root, "/dist/index.html"));
@@ -26,6 +27,17 @@ try {
         fs.writeFileSync(path.join(root, '../../server/src/views/release.pug'), res.join("\n"), 'utf-8','w+');
         
         console.log('模板转换成功'.green);
+
+        // 只能在application下执行
+        var cmdStr = 'cp -rf dist/* ../../server/src/public/';
+        exec(cmdStr, function(err,stdout,stderr){
+            if(err) {
+                console.log('cp 静态文件失败'.red);
+                console.log(err.red);
+            } else {
+                console.log('cp 静态文件成功'.green);
+            }
+        });
     });
 } catch(e) {
     throw e;

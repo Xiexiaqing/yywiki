@@ -22,6 +22,14 @@ class Signin extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+        let token = window.localStorage.getItem('jwt_token') || '';
+    
+        if (token) {
+            this.context.router.push('/home');
+        }
+    }
+
     handleInputChange = (type, val) => {
         this.setState({
             [type]: val

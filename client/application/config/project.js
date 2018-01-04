@@ -43,19 +43,13 @@ const TPL = [
     '        <script src="<%=js.app %>"></script>',
     '        <script>',
     '           if ("serviceWorker" in navigator) {navigator.serviceWorker.register("/sw.js");}',
-    '            if (document.getElementById("cachedpagelist") && "caches" in window) {',
-    '                var scr = document.createElement("script");',
-    '                scr.src = "/offlinepage.js";',
-    '                scr.async = 1;',
-    '                document.head.appendChild(scr);',
-    '            }',
     '        </script>',
     '    </body>',
     '</html>'
 ].join('\n');
  
 module.exports = {
-    prefix: 'http://60.205.183.142:8088/',
+    prefix: '/',
     devPrefix: '//127.0.0.1',
     appName: '',
     title: '',

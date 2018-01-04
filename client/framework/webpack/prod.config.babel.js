@@ -19,7 +19,8 @@ if (suffix === '_repochpack') {
 }
 
 const config = require(path.join(root, 'config', 'project'));
-prefix = config.prefix.indexOf('//') === 0 ? config.prefix : config.prefix.indexOf('http') === 0 ? config.prefix : ('//' + config.prefix);
+prefix = config.prefix;
+// prefix = config.prefix.indexOf('//') === 0 ? config.prefix : config.prefix.indexOf('http') === 0 ? config.prefix : ('//' + config.prefix);
 // prefix = prefix.substr(-1) === '/' ? prefix + suffix + '/' : '/' + prefix + suffix + '/';
 
 function getFileList(src, callback) {

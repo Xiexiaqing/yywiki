@@ -64,6 +64,7 @@ module.exports = function() {
                         resolve(res);
                     } else if (res.code === 100002) {
                         window.localStorage.removeItem('jwt_token');
+                        window.localStorage.removeItem('user_id');
                         window.location.replace('/signin');
                         reject(res);
                     } else {
