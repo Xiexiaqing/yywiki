@@ -63,7 +63,7 @@ class Mine extends React.Component {
         delete user_obj[user_id];
         window.localStorage.setItem('user_list', JSON.stringify(user_obj));
 
-        this.context.router.push('/signin');
+        this.context.router.push('/');
     }
 
     handleChangeUser = (val) => {
@@ -72,7 +72,7 @@ class Mine extends React.Component {
         if (token === '-1') {
             window.localStorage.removeItem('jwt_token');
             window.localStorage.removeItem('user_id');
-            this.context.router.push('/signin');
+            this.context.router.push('/');
         } else {
             let user_id = '';
             for (let i = 0; i < this.state.user_list.length; i++) {
