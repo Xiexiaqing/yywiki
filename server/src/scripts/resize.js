@@ -3,8 +3,8 @@ var imageMagick = gm.subClass({imageMagick: true});
 var fs = require('fs');
 var path = require('path');
 
-var ori_path = path.join(__dirname, '../public/images/big/');
-var tar_path = path.join(__dirname, '../public/images/small/');
+var ori_path = path.join(__dirname, '../public/upload/images/big/');
+var tar_path = path.join(__dirname, '../public/upload/images/small/');
 var target_width = 375;
 
 fs.readdir(ori_path, function(err, files) {
@@ -21,6 +21,7 @@ fs.readdir(ori_path, function(err, files) {
             if(stats.isFile()){
                 imageMagick(file_path)
                     .size(function(err, res) {
+                        if (err) { console.log(err); return; }
                         var pic_width = res.width;
                         var pic_height = res.height;
 
