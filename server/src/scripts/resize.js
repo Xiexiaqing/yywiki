@@ -1,3 +1,6 @@
+/*
+ * 将当前目录下的big文件夹内的文件，以375宽度为基准压缩图片，并保存到small文件夹里
+ */
 var gm = require('gm');
 var imageMagick = gm.subClass({imageMagick: true});
 var fs = require('fs');

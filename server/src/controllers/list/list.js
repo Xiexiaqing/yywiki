@@ -50,7 +50,7 @@ module.exports = function(db_instance, app) {
                 feed_item.pics = [];
                 for (var j = 0; j < res[i].files.length; j++) {
                     feed_item.pics.push({
-                        url:  '/upload/images/big/' + res[i].files[j].toLowerCase()
+                        url:  '/upload/images/small/' + res[i].files[j].toLowerCase()
                     });
                 }
             } else if (res[i].type === 'video') {

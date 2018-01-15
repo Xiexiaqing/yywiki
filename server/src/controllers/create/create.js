@@ -73,7 +73,7 @@ module.exports = function(db_instance, app) {
                 /* 如果是video不用压缩，直接放在video文件夹中
                  * 如果是pic则原始数据放到images中的big文件夹下，压缩后的放到small下
                  * 
-                 * 如果目录不存在，则创建
+                 * to do: 如果目录不存在，则创建
                  */
                 if (file_type === 'video') {
                     stream = fs.createWriteStream(path.join(__dirname, '../../public/upload/' + directory_name + '/' + file_name + '.' + ext));  
