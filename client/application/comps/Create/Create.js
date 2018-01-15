@@ -26,7 +26,7 @@ class Create extends React.Component {
             video_file: null,
             video_file_url: "",
             file_type: "pic",
-            record_time: getNowDate(),
+            record_time: new Date(),
             visiable_range: "all"
         };
     }
@@ -89,7 +89,7 @@ class Create extends React.Component {
 
         var formData = new FormData();
         formData.append('text', this.state.text);
-        formData.append('record_time', this.state.record_time);
+        formData.append('record_time', getNowDate(this.state.record_time));
         formData.append('visiable_range', this.state.visiable_range);
 
         if (this.state.img_files.length === 0 && !this.state.video_file) {
@@ -149,8 +149,8 @@ class Create extends React.Component {
                         mode="datetime"
                         title="选择时间"
                         extra="当前时间"
-                        value={ new Date(this.state.record_time) }
-                        onChange={date => this.setState({ record_time: getNowDate(date) })}
+                        value={ this.state.record_time }
+                        onChange={date => this.setState({ record_time: date })}
                     >
                         <Item arrow="horizontal">记录时间</Item>
                     </DatePicker>

@@ -85,6 +85,10 @@ class Mine extends React.Component {
         }
     }
 
+    handleToDisconvery = () => {
+        this.context.router.push('/discovery');
+    }
+
     render() {
         return (
             <div>
@@ -153,6 +157,25 @@ class Mine extends React.Component {
                         }
                         selected={ false }
                         onPress={ this.handleToHome } />
+                    <TabBar.Item
+                        title="发现"
+                        key="discovery"
+                        icon={
+                        <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selectedIcon={
+                        <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg) center center /  21px 21px no-repeat' }}
+                            />
+                        }
+                        selected={ false }
+                        onPress={ this.handleToDisconvery } />
                     <TabBar.Item
                         title="我"
                         key="mine"

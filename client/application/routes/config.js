@@ -27,6 +27,12 @@ module.exports = {
             on_enter: 'mustLogin',
             state_path: 'home/index'
         },
+        '/discovery': {
+            component_path: 'Discovery/Discovery',
+            title: '发现',
+            on_enter: 'mustLogin',
+            state_path: ''
+        },
         '/article': {
             component_path: 'Article/Article',
             title: "文章",

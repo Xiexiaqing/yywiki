@@ -9,15 +9,6 @@ import Article_Card from 'comps/common/Cards/Article/Article';
 import Video_Card from 'comps/common/Cards/Video/Video';
 import Empty from 'comps/common/Empty/Empty';
 
-const RadioItem = Radio.RadioItem;
-const TYPE_MAPPER = [
-    { value: 'all', label: "全部" },
-    { value: 'text', label: "文字" },
-    { value: 'pic', label: "图片" },
-    { value: 'video', label: "视频"},
-    { value: 'article', label: "文章" }
-];
-
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
 let wrapProps;
 if (isIPhone) {
@@ -26,7 +17,7 @@ if (isIPhone) {
     };
 }
 
-class Home extends React.Component {
+class Discovery extends React.Component {
     constructor(props) {
         super(props);
 
@@ -34,36 +25,6 @@ class Home extends React.Component {
             open: false,
             selected_type: 'all'
         }
-    }
-
-    onOpenChange = (...args) => {
-        this.setState({ open: !this.state.open });
-    }
-
-    handleChangeType = (selected_type) => {
-        this.setState({
-            selected_type,
-            open: false
-        });
-
-        this.context.createAction("home.index.getList", {
-            type: selected_type,
-            page: 1
-        });
-    }
-
-    buildSideBar = () => {
-        return (
-            <List>
-                { TYPE_MAPPER.map((item, i) => {
-                    return (
-                        <RadioItem key={ item.value } checked={ this.state.selected_type === item.value } onChange={ this.handleChangeType.bind(this, item.value) }>
-                            { item.label }
-                        </RadioItem>
-                    );
-                })}
-            </List>
-        );
     }
 
     handleLoadData = (cb) => {
@@ -76,6 +37,8 @@ class Home extends React.Component {
     }
 
     buildListViewRow = (rowData, sectionID, rowID) => {
+        return null;
+
         const obj = rowData;
         let card_data = {
             title: rowData.title,
@@ -115,6 +78,8 @@ class Home extends React.Component {
     }
 
     buildListView = () => {
+        return <Empty content="暂无内容"/>;
+
         let { feed_list } = this.props;
         
         if (feed_list.length === 0) {
@@ -144,16 +109,12 @@ class Home extends React.Component {
         );
     }
 
-    handleCreateNew = () => {
-        this.context.router.push('/create');
-    }
-
     handleToMine = () => {
         this.context.router.push('/mine');
     }
 
-    handleToDisconvery = () => {
-        this.context.router.push('/discovery');
+    handleToHome = () => {
+        this.context.router.push('/home');
     }
 
     render() {
@@ -161,24 +122,13 @@ class Home extends React.Component {
             <div>
                 <NavBar
                     mode="light"
-                    icon={ <Icon type="ellipsis" /> }
-                    onLeftClick={ this.onOpenChange }
-                    rightContent={[
-                        <span key="bar_0" onClick={ this.handleCreateNew } style={{ fontSize: "24px" }}>+</span>
-                    ]}
+                    icon={ null }
+                    onLeftClick={ null }
+                    rightContent={ null }
                 >
-                    Home
+                    发现
                 </NavBar>
-                <Drawer
-                    className="my-drawer"
-                    style={{ minHeight: document.documentElement.clientHeight - 95 }}
-                    contentStyle={{ color: '#A6A6A6' }}
-                    sidebar={ this.buildSideBar() }
-                    open={ this.state.open }
-                    onOpenChange={ this.onOpenChange }
-                >
-                    { this.buildListView() }
-                </Drawer>
+                <div style={{ height: 570 }}>{ this.buildListView() }</div>
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
@@ -201,8 +151,8 @@ class Home extends React.Component {
                                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        selected={ true }
-                        onPress={ null } />
+                        selected={ false }
+                        onPress={ this.handleToHome } />
                     <TabBar.Item
                         title="发现"
                         key="discovery"
@@ -220,8 +170,8 @@ class Home extends React.Component {
                                 background: 'url(https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        selected={ false }
-                        onPress={ this.handleToDisconvery } />
+                        selected={ true }
+                        onPress={ null } />
                     <TabBar.Item
                         title="我"
                         key="mine"
@@ -248,8 +198,4 @@ class Home extends React.Component {
 }
 
 export default createContainer([
-    ['home.index.feed_list', 'array', []],
-    ['home.index.page', 'number', 1],
-    ['home.index.birthday', 'string', ''],
-    ['home.index.total_page', 'number', 0]
-])(Home);
+])(Discovery);
