@@ -15,6 +15,6 @@ export default function(props) {
         return;
     }
     
-    window.location.replace("/signin");
+    window.location.replace("/");
     return true;
 }

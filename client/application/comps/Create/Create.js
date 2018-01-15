@@ -26,7 +26,7 @@ class Create extends React.Component {
             video_file: null,
             video_file_url: "",
             file_type: "pic",
-            record_time: "",
+            record_time: getNowDate(),
             visiable_range: "all"
         };
     }
@@ -146,11 +146,11 @@ class Create extends React.Component {
                 <Separator />
                 <List>
                     <DatePicker
-                        mode="date"
-                        title="Select Date"
-                        extra="当前日期"
-                        value={ this.state.record_time }
-                        onChange={date => this.setState({ record_time: date })}
+                        mode="datetime"
+                        title="选择时间"
+                        extra="当前时间"
+                        value={ new Date(this.state.record_time) }
+                        onChange={date => this.setState({ record_time: getNowDate(date) })}
                     >
                         <Item arrow="horizontal">记录时间</Item>
                     </DatePicker>
@@ -208,3 +208,23 @@ class Create extends React.Component {
 export default createContainer([
     ['create.index.msg', 'string', ""],
 ])(Create);
+
+function getNowDate(target_date) {
+    var now_date = target_date ? target_date : new Date();
+
+    var y = now_date.getFullYear();
+    var m = formatVal(now_date.getMonth() + 1);
+    var d = formatVal(now_date.getDate());
+
+    var h = formatVal(now_date.getHours());
+    var M = formatVal(now_date.getMinutes());
+    var s = formatVal(now_date.getSeconds());
+    
+    return y + '-' + m + '-' + d + ' ' + h + ':' + M;
+}
+
+function formatVal(val) {
+    val = val < 10 ? '0' + val : val;
+
+    return val;
+}

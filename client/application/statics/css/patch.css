@@ -137,3 +137,7 @@
 .am-tab-bar-bar .am-tab-bar-tab-title {
     font-size: 14px;
 }
+
+.am-list-item .am-list-line .am-list-extra {
+    flex-basis: initial;
+}
