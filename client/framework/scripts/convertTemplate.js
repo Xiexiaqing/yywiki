@@ -29,13 +29,21 @@ try {
         console.log('模板转换成功'.green);
 
         // 只能在application下执行
-        var cmdStr = 'cp -rf dist/* ../../server/src/public/';
+        var cmdStr = 'rm -rf /home/workspace/www/*';
         exec(cmdStr, function(err,stdout,stderr){
             if(err) {
-                console.log('cp 静态文件失败'.red);
+                console.log('删除部署文件失败'.red);
                 console.log(err.red);
             } else {
-                console.log('cp 静态文件成功'.green);
+                var cp_cmd_str = 'cp -rf dist/* /home/workspace/www/';
+                exec(cp_cmd_str, function(err,stdout,stderr){
+                    if(err) {
+                        console.log('cp 静态文件失败'.red);
+                        console.log(err.red);
+                    } else {
+                        console.log('cp 静态文件成功'.green);
+                    }
+                });
             }
         });
     });
