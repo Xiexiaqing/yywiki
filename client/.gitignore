@@ -9,12 +9,6 @@ application/package-lock.json*
 framework/node_modules
 application/node_modules
 
-# FTP
-ftpsync.settings
-
-# SFTP
-sftp-config.json
-
 # Other files
 .svn
 .DS_Store
