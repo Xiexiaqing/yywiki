@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2018-1-15 13:38:48
+#ver:2018-1-15 18:29:53
 #plugin:4.9.0
 
 CACHE:
@@ -26,14 +26,14 @@ CACHE:
 /js/16.0947d7f432c0754ca059.js
 /css/app.47ee35d968da9884f26a8397de07068e.css
 /
-/manifest.json
 /offlinepage.js
-/image/logo/logo072.png
-/image/logo/logo016.png
 /image/logo/logo152.png
-/image/logo/logo192.png
+/manifest.json
+/image/logo/logo016.png
+/image/logo/logo072.png
 /image/logo/logo256.png
 /image/logo/logo512.png
+/image/logo/logo192.png
 
 NETWORK:
 *

@@ -19,4 +19,3 @@ sftp-config.json
 .svn
 .DS_Store
 application/template.html
-application/dist/
