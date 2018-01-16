@@ -17,6 +17,11 @@ if (isIPhone) {
     };
 }
 
+const SECTION_MAPPER = {
+    video: "视频",
+    music: "歌曲"
+};
+
 class Discovery extends React.Component {
     constructor(props) {
         super(props);
@@ -37,8 +42,6 @@ class Discovery extends React.Component {
     }
 
     buildListViewRow = (rowData, sectionID, rowID) => {
-        return null;
-
         const obj = rowData;
         let card_data = {
             title: rowData.title,
@@ -66,43 +69,32 @@ class Discovery extends React.Component {
     }
 
     buildSectionTitle = (sectionData, sectionID) => {
-        let days = Math.ceil((new Date(sectionID).getTime() - new Date(this.props.birthday).getTime()) / (24 * 3600 * 1000)) + 1;
-        days += "天";
-
         return (
             <div className="sticky">
-                <span>{ sectionID }</span>
-                <span style={{ fontSize: "16px", paddingLeft: "10px" }}>{ days }</span>
+                <span>{ SECTION_MAPPER[sectionID] }</span>
             </div>
         );
     }
 
     buildListView = () => {
-        return <Empty content="暂无内容"/>;
+        // return <Empty content="暂无内容"/>;
 
-        let { feed_list } = this.props;
-        
-        if (feed_list.length === 0) {
-            return <Empty content="暂无内容"/>;
-        }
-
-        let formatted_data = {};
-        feed_list[feed_list.length - 1].is_last = true;
-
-        for (let i = 0; i < feed_list.length; i++) {
-            let belong_date = feed_list[i].belong_date;
-
-            if (!formatted_data[belong_date]) {
-                formatted_data[belong_date] = [];
-            }
-
-            formatted_data[belong_date].push(feed_list[i]);
-        }
+        let temp_data = {
+            video: [
+                {
+                    type: "video",
+                    title: "小兔兵兵-秋千",
+                    text: "",
+                    date: "2018-01-16",
+                    video_url: "/resource/videos/1.mp4"
+                }
+            ]
+        };
 
         return (
             <CustomListView
-                list_data={ formatted_data }
-                has_more={ this.props.total_page > this.props.page ? true : false }
+                list_data={ temp_data }
+                has_more={ false }
                 onRenderRow={ this.buildListViewRow }
                 onRenderSectionTitle={ this.buildSectionTitle }
                 onLoad={ this.handleLoadData }/>

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2018-1-15 22:16:34
+#ver:2018-1-16 19:21:45
 #plugin:4.9.0
 
 CACHE:
@@ -9,14 +9,14 @@ CACHE:
 /image/279614fb.404.png
 /js/0.a7e84c057eef58f6cf65.js
 /js/1.744f5fea79c1d17e0e22.js
-/js/2.27cb487e4f8fa2c160ac.js
+/js/2.b4aeb4930f65b0af0983.js
 /js/3.da2271bb19e08dd68a71.js
 /js/4.caa8daf73e31df1cca22.js
 /js/5.b238f163245165260e14.js
 /js/6.5b062b5e0c7e636aad0b.js
 /js/worker.60bdd7f81c37d08f46eb.js
 /js/8.f16e9e9ba86620d88c19.js
-/js/inline.225dfc32abc00193cb9c.js
+/js/inline.25f66a597ee3ddc44ca8.js
 /js/vendor.9f212f3e6bc060e72ca8.js
 /js/app.677754a012f6e402190b.js
 /js/bee.43c642e252b69882d726.js
@@ -29,12 +29,12 @@ CACHE:
 /
 /manifest.json
 /offlinepage.js
-/image/logo/logo016.png
-/image/logo/logo072.png
 /image/logo/logo152.png
+/image/logo/logo072.png
 /image/logo/logo192.png
 /image/logo/logo512.png
 /image/logo/logo256.png
+/image/logo/logo016.png
 
 NETWORK:
 *
