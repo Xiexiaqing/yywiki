@@ -13,6 +13,7 @@ var bootstrapRoutes = require('./bootstrapRoutes');
 var err_middleware = require('../src/middleware/error');
 var referer_middleware = require('../src/middleware/referer');
 var token_middleware = require('../src/middleware/token');
+var proxy_middleware = require('../src/middleware/proxy');
 
 module.exports = function() {
 	/******************************************************
@@ -36,7 +37,8 @@ module.exports = function() {
 	  	},
 	  	app: app
 	});
-
+	
+	app.use(proxy_middleware(app));
 	app.use(token_middleware(app));
 	app.use(referer_middleware(app));
 	app.use(err_middleware(app));
