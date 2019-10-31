@@ -6,11 +6,13 @@ module.exports = () => {
     return function *(next) {
         try {
             var referer = this.headers.referer;
-            var user_agent = this.headers.ua;
             var url_path = this.path;
 
-            console.log(user_agent);
-            console.log(this.headers);
+            // 微信登陆需要的头
+            var x_wx_code = this.headers['x-wx-code'];
+            var x_wx_iv = this.headers['x-wx-iv'];
+            var x_wx_encrypted_data = this.headers['x-wx-encrypted-data'];
+            var user_agent = this.headers['user-agent'];
 
             if (url_path.indexOf('/weapp') > -1) {
                 
