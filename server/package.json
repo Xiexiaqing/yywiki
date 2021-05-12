@@ -41,7 +41,7 @@
     "memory-cache": "^0.1.6",
     "mongoose": "^4.13.5",
     "node-schedule": "1.2.0",
-    "nodemailer": "^2.7.0",
+    "nodemailer": "^6.4.16",
     "pm2": "^2.2.1",
     "qr-image": "^3.2.0",
     "segment": "0.1.3",
